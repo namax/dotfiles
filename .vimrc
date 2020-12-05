@@ -33,6 +33,7 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 
+set noswapfile
 set wildmenu
 "set ruler
 
@@ -194,7 +195,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
