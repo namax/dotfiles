@@ -1,4 +1,4 @@
-source  ~/.dotfiles/evilidea/extra/applications.vim
-source ~/.dotfiles/evilidea/extra/buffers.vim
-source ~/.dotfiles/evilidea/extra/debug.vim
-source ~/.dotfiles/evilidea/extra/go.vim
+source  ~/evilidea/extra/applications.vim
+source ~/evilidea/extra/buffers.vim
+source ~/evilidea/extra/debug.vim
+source ~/evilidea/extra/go.vim

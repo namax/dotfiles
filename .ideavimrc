@@ -28,6 +28,6 @@ set argtextobj
 
 
 
-source /home/namax/.dotfiles/evilidea/extra.vim
+source /home/namax/evilidea/extra.vim
 
-source /home/namax/.dotfiles/evilidea/spacemacs.vim
+source /home/namax/evilidea/spacemacs.vim
