@@ -1,6 +1,7 @@
 "-------------------------------------------------------------------------------
 "-- GENERAL 
 "-------------------------------------------------------------------------------
+
 let mapleader=" "
 " option determines the number of context lines you would like to see above and below the cursor
 set scrolloff=5
