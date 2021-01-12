@@ -42,6 +42,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 "set ruler
 
 set showmatch "highlights [({})]
+
 " Height of the command bar
 set cmdheight=1
 
