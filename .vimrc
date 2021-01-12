@@ -1,8 +1,10 @@
 "-------------------------------------------------------------------------------
 "-- GENERAL 
 "-------------------------------------------------------------------------------
-
 let mapleader=" "
+" option determines the number of context lines you would like to see above and below the cursor
+set scrolloff=5
+set history=1000
 "set t_Co=256
 set termguicolors
 " incremental search
@@ -35,9 +37,30 @@ set softtabstop=4
 
 set noswapfile
 set wildmenu
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 "set ruler
 
 set showmatch "highlights [({})]
+" Height of the command bar
+set cmdheight=1
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw 
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" For regular expressions turn magic on
+set magic
+set foldcolumn=1
+
+" Turn backup off, since most stuff is in SVN, git etc. anyway...
+set nobackup
+set nowb
+set noswapfile
 "===============================================================================
 
 
@@ -77,7 +100,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "-- Syntax highlighting
 "-------------------------------------------------------------------------------
 Plug 'sheerun/vim-polyglot'
-
+Plug 'plasticboy/vim-markdown'
 "-------------------------------------------------------------------------------
 "- UNDER TESTING
 "-------------------------------------------------------------------------------
@@ -264,77 +287,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "===============================================================================
 
 
-"-------------------------------------------------------------------------------
-" vim-airline
-"-------------------------------------------------------------------------------
-let g:airline#extensions#virtualenv#enabled = 1
-
-" typescript
-let g:yats_host_keyword = 1
-
-autocmd FileType json syntax match Comment +\/\/.\+$+
-"===============================================================================
-
-
-"-------------------------------------------------------------------------------
-"-- MAPPINGS
-"-------------------------------------------------------------------------------
-
-"-- WINDOWS BUFFERS
-
-" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
-
-" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
-
-"-------------------------------------------------------------------------------
-"-- VERSION CONTROL
-
-" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
-
-"-------------------------------------------------------------------------------
-"-- SEARCH 
-"-------------------------------------------------------------------------------
-
-"-- FZF
-"-------------------------------------------------------------------------------
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let $FZF_DEFAULT_COMMAND =  "fd --type f --exclude vendor --exclude node_modules"
-
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>/ :FZF -m<CR>
-      
-
-"-- RIPGREP 
-"-------------------------------------------------------------------------------
-nnoremap <silent> <leader>f :Rg<CR>
-let Grep_Default_Options = '-IR'
-let Grep_Skip_Files = '*.log *.db'
-let Grep_Skip_Dirs = '.git node_modules'
-"===============================================================================
-
-"-------------------------------------------------------------------------------
-"-- FILES
-"-------------------------------------------------------------------------------
-" Reload VIM config file
-nnoremap <leader>fr :w<CR>:source $MYVIMRC<CR>
-
-"===============================================================================
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim (manage C code)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -501,4 +453,108 @@ endif
 
 
 
+"-------------------------------------------------------------------------------
+" vim-airline
+"-------------------------------------------------------------------------------
+let g:airline#extensions#virtualenv#enabled = 1
 
+" typescript
+let g:yats_host_keyword = 1
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
+"===============================================================================
+
+
+"-------------------------------------------------------------------------------
+"-- MAPPINGS
+"-------------------------------------------------------------------------------
+
+"-- WINDOWS BUFFERS
+
+" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+"-------------------------------------------------------------------------------
+"-- VERSION CONTROL
+
+" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
+"-------------------------------------------------------------------------------
+"-- SEARCH 
+"-------------------------------------------------------------------------------
+
+"-- FZF
+"-------------------------------------------------------------------------------
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "fd --type f --exclude vendor --exclude node_modules"
+
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>/ :FZF -m<CR>
+      
+
+"-- RIPGREP 
+"-------------------------------------------------------------------------------
+nnoremap <silent> <leader>f :Rg<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
+"===============================================================================
+
+"-------------------------------------------------------------------------------
+"-- FILES
+"-------------------------------------------------------------------------------
+" Reload VIM config file
+nnoremap <leader>fr :w<CR>:source $MYVIMRC<CR>
+nnoremap <leader>fw :w<CR>
+
+" Visual mode pressing * searches for the current selection
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+"===============================================================================
+
+
+"-------------------------------------------------------------------------------
+"-- TWIG 
+"-------------------------------------------------------------------------------
+
+autocmd BufRead *.twig set syntax=html filetype=html
