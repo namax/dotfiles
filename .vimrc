@@ -1,3 +1,9 @@
+"map keys
+"setxkbmap -option ctrl:nocaps - will map ctrl to capslock 
+"in addition 
+"xcape -e 'Control_L=Escape' - This will make the Caps button function as
+"Escape if you press it individually, and as Control if pressed with something
+"else
 "-------------------------------------------------------------------------------
 "-- GENERAL 
 "-------------------------------------------------------------------------------

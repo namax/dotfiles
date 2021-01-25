@@ -18,20 +18,20 @@ vnoremap <leader>wx    <Esc>:action CloseAllEditors<CR>
 
 
 " Focus window left
-nnoremap <C-h>         <C-w>h
-vnoremap <C-h>         <Esc><C-w>h
+nnoremap <C-h>    <C-w>h
+vnoremap <C-h>    <Esc><C-w>h
 
 " Focus window down
-nnoremap <C-j>        <C-w>j
-vnoremap <C-j>         <Esc><C-w>j
+nnoremap <C-j>    <C-w>j
+vnoremap <C-j>    <Esc><C-w>j
 
 " Focus window up
-nnoremap <C-k>       <C-w>k
-vnoremap <C-k>       <Esc><C-w>k
+nnoremap <C-k>    <C-w>k
+vnoremap <C-k>    <Esc><C-w>k
 
 " Focus window right
-nnoremap <C-l>          <C-w>l
-vnoremap <C-l>          <Esc><C-w>l
+nnoremap <C-l>    <C-w>l
+vnoremap <C-l>    <Esc><C-w>l
 
 
 " Focus next project
