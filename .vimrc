@@ -4,6 +4,20 @@
 "xcape -e 'Control_L=Escape' - This will make the Caps button function as
 "Escape if you press it individually, and as Control if pressed with something
 "else
+
+"-------------------------------------------------------------------------------
+"-- Install Vim Plug if not installed 
+"-------------------------------------------------------------------------------
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 "-------------------------------------------------------------------------------
 "-- GENERAL 
 "-------------------------------------------------------------------------------
@@ -108,7 +122,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "-- Syntax highlighting
 "-------------------------------------------------------------------------------
 Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown'
 "-------------------------------------------------------------------------------
 "- UNDER TESTING
 "-------------------------------------------------------------------------------
