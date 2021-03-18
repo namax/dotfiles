@@ -95,6 +95,9 @@ call plug#begin('~/.vim/plugged')
 "- ACCEPTED:
 "-------------------------------------------------------------------------------
 
+"-- Debugger
+Plug 'vim-vdebug/vdebug'
+
 "-- File tree
 "-------------------------------------------------------------------------------
 Plug 'preservim/nerdtree'
@@ -142,8 +145,6 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 "-------------------------------------------------------------------------------
 " FOR FUTURE TEST
 "-------------------------------------------------------------------------------
-"https://vimawesome.com/plugin/vdebug - a debbuger. Include working with
-"python, php etc
 "----------------------------------------
 
 call plug#end()
