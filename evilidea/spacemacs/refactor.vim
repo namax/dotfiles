@@ -32,12 +32,8 @@ nnoremap <leader>mri      :action OptimizeImports<CR>
 vnoremap <leader>mri      <Esc>:action OptimizeImports<CR>
 
 " Create a new Element.
-nnoremap <leader>mrN      :action NewElement<CR>
-vnoremap <leader>mrN      :action NewElement<CR>
-
-" Create a new class. You can also create enum, interface and more.
-nnoremap <leader>mrn      :action NewClass<CR>
-vnoremap <leader>mrn      :action NewClass<CR>
+nnoremap <leader>mrn      :action NewElement<CR>
+vnoremap <leader>mrn      :action NewElement<CR>
 
 " Choose a refactoring action
 nnoremap <leader>mrR      :action Refactorings.QuickListPopupAction<CR>
