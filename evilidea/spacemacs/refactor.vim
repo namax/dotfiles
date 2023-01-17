@@ -8,8 +8,7 @@ nnoremap <leader>mrc      :action GenerateConstructor<CR>
 vnoremap <leader>mrc      <Esc>:action GenerateConstructor<CR>
 
 " Extract method
-nnoremap <leader>mrem    :action ExtractMethod<CR>
-vnoremap <leader>mrem    <Esc>:action ExtractMethod<CR>
+map <leader>mrem    :action ExtractMethod<CR>
 
 " Extract superclass
 nnoremap <leader>mres    :action ExtractSuperclass<CR>

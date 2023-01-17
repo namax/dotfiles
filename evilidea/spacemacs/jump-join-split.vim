@@ -1,9 +1,5 @@
 " Reformat whole buffer
-nnoremap <leader>m=    :action ReformatCode<CR>
-
-" Reformat selected lines
-vnoremap <leader>m=    :action ReformatCode<CR>
-
+nmap <leader>m=    <Action>(ReformatCode)<Action>(OptimizeImports)
 
 " Jump to character (AceJump plugin required)
 nnoremap <leader>jj    :action AceAction<CR>
