@@ -43,13 +43,33 @@ packer.init({
 packer.reset()
 local use = packer.use
 
---[[
-  Start adding plugins here
-]]
-use({ -- Have packer manage itself
+--
+-- PLUGINS
+--
+-- Have packer manage itself
+use({ 
   "wbthomason/packer.nvim",
 })
+-- theme
 use 'navarasu/onedark.nvim'
+-- Install and configure tree-sitter languages
+use({ 
+ "nvim-treesitter/nvim-treesitter",
+  run = function()
+    pcall(require('nvim-treesitter.install').update { with_sync = true })
+  end,
+  config = function()
+    require("config.nvim-treesitter")
+  end,
+})
+
+
+
+-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
+local has_plugins, plugins = pcall(require, 'custom.plugins')
+if has_plugins then
+  plugins(use)
+end
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins

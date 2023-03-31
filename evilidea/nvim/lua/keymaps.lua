@@ -18,6 +18,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 -- 000 Don't jump when using *
 -- map("n", "*", "*<C-o>", opts)
 
@@ -35,11 +36,8 @@ map("n", "<leader>sc", ":noh<Cr>", opts)
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
--- 000 YY/XX Copy/Cut into the system clipboard
---- vim.cmd([[
---- noremap YY "+y<CR>
---- noremap XX "+x<CR>
---- ]])
+-- shoud install xclip
+vim.opt.clipboard = 'unnamedplus'
 
 -- 000Doble ESC or <C-s> to go to normal mode in terminal
 map("t", "<C-s>", "<C-\\><C-n>", opts)
