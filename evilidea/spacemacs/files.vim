@@ -48,8 +48,8 @@ nnoremap <leader>fya    :action CopyAbsolutePath<CR>
 vnoremap <leader>fya    :action CopyAbsolutePath<CR>
 
 " Copy file path Relative
-nnoremap <leader>fyy    :action CopyContentRootPath<CR>
-vnoremap <leader>fyy    :action CopyContentRootPath<CR>
+nnoremap <leader>fyy    :action CopyPathFromRepositoryRootProvider<CR>
+vnoremap <leader>fyy    :action CopyPathFromRepositoryRootProvider<CR>
 
 " Create a new Element.
 nnoremap <leader>fn    :action NewElement<CR>
