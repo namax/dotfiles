@@ -25,6 +25,9 @@ set surround
 " Add text object for function arguments: aa (around argument), ia (inside argument)
 set argtextobj
 
+" do not copy on select
+set clipboard+=unnamedplus
+
 
 
 
