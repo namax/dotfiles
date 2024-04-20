@@ -12,3 +12,4 @@ for checkout
 dotfiles config --local status.showUntrackedFiles no
 dotfiles checkout
 ```
+i
